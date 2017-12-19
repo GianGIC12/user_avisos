@@ -21,10 +21,10 @@ public class Conexion {
 
     public Conexion() {
 
-        gestor = "35.185.84.183";
-        bd = "db_apuestatotal_prod";
-        user = "u_apuestatotal_des";
-        pass = "AePhaesae5jaiv";
+        gestor = "db.todobusco.com";
+        bd = "db_todobusco_prod";
+        user = "u_tbusco_des";
+        pass = "UNguphiehaes1a";
     }
 
     public void conectar() throws SQLException {
