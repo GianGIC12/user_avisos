@@ -81,13 +81,13 @@ public class ExportarCSV {
         csvOutput.write(usuarios[i].getCelular());
         csvOutput.write(usuarios[i].getFecha_registro());
         csvOutput.write("0000");
-        csvOutput.write("No Definido");
-        csvOutput.write("No Definido");
-        csvOutput.write("No Definido");
-        csvOutput.write("No definido");
-        csvOutput.write("No Definido");
-        csvOutput.write("No Definido");
-        csvOutput.write("No Definido");
+        csvOutput.write("");
+        csvOutput.write("");
+        csvOutput.write("");
+        csvOutput.write("");
+        csvOutput.write("");
+        csvOutput.write("");
+        csvOutput.write("");
         
         
         csvOutput.endRecord();

@@ -43,7 +43,7 @@ public class Consultas {
         
         
         sql="SELECT id,idUser FROM db_todobusco_prod.mod_usuario_perfil  where created_at>'2017-09-01'"
-                + " limit 1000";
+                + " limit 4000";
         
         System.out.println(sql);
         
