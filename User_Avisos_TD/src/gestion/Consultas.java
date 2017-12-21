@@ -6,11 +6,14 @@
 
 package gestion;
 
+import beans.AvisoBean;
 import beans.UsuarioBean;
 import conexion.Conexion;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -148,11 +151,135 @@ public class Consultas {
            
             int contAvisos = 0;
             
-            sql="select id,idCategoria,tituloAviso,idPais,fchPublicacion,estado from db_todobusco_prod.mod_aviso_aviso\n" 
+            sql="select id,idCategoria,tituloAviso,idPais,fchPublicacion,estado,destaque from db_todobusco_prod.mod_aviso_aviso\n" 
                     +"\n" 
                     +"where idPerfil=" + usuarios[i].getId_perfil();
             
-            System.out.println(sql);
+           
+            
+             PreparedStatement stm = objCon.getCon().prepareStatement(sql);
+
+            ResultSet rs = stm.executeQuery();
+            
+            List<AvisoBean> avisos= new ArrayList<AvisoBean>();
+            
+            while (rs.next()) {
+                
+                AvisoBean aviso= new AvisoBean();
+                
+                int id_aviso= rs.getInt("id");
+                int idCategoria= rs.getInt("idCategoria");
+                String titulo_aviso= rs.getString("tituloAviso");
+                int idPais=rs.getInt("idPais");
+                
+                String fecha_publicacion="";
+                
+                if (rs.getString("fchPublicacion")==null) {
+                    
+                    fecha_publicacion="";
+                    
+                }else {
+                 
+                    fecha_publicacion= rs.getString("fchPublicacion").substring(0,10);
+                   
+                }
+                
+                
+                
+                
+                
+                String estado=rs.getString("estado");
+                int idDestaque=rs.getInt("destaque");
+                
+                String portal="";
+                String categoria="";
+                String pais="";
+                String destaque="";
+                
+                if (idCategoria==1) {
+                    
+                    portal="Casa Busco";
+                    categoria="Casas";
+                    
+                }else if (idCategoria==2) {
+                    
+                    portal="Carro Busco";
+                    categoria="Carros";
+                    
+                }else{
+                    
+                    portal= "Venta Busco";
+                    
+                    categoria="Ventas";
+                }
+                
+                if (idPais==1) {
+                    
+                    pais="Nicaragua";
+                    
+                }else if (idPais==38) {
+                    
+                    pais="Costa Rica";
+                    
+                }else{
+                    
+                    pais="Nuevo";
+                    
+                }
+              
+                if (estado.equalsIgnoreCase("0")) {
+                    estado="Despublicado";
+                }else if (estado.equalsIgnoreCase("1")) {
+                    estado="Publicado";
+                }else if (estado.equalsIgnoreCase("2")) {
+                    estado="Caducado";
+                }else if (estado.equalsIgnoreCase("3")) {
+                    estado="Eliminado";
+                }else if (estado.equalsIgnoreCase("4")) {
+                    estado="Pendiente De Pago";
+                }else if (estado.equalsIgnoreCase("5")) {
+                    estado="Moderado";
+                }else if (estado.equalsIgnoreCase("6")) {
+                    estado="De Baja";
+                }else if (estado.equalsIgnoreCase("7")) {
+                    estado="Vendido";
+                }else if (estado.equalsIgnoreCase("8")) {
+                    estado="Pendiente de Edicion";
+                }else if (estado.equalsIgnoreCase("9")) {
+                    estado="Eliminacion Total";
+                }
+                
+                
+                if (idDestaque==1) {
+                    destaque="Aviso Simple";
+                }else if (idDestaque==2) {
+                    destaque="Destaque Plata";
+                }else if (idDestaque==3) {
+                    destaque="Destaque Oro";
+                }else if (idDestaque==6) {
+                    destaque="Destaque Membresia";
+                }
+                
+                aviso.setId_aviso(id_aviso);
+                aviso.setPortal(portal);
+                aviso.setCategoria(categoria);
+                aviso.setTitulo_aviso(titulo_aviso);
+                aviso.setPais_aviso(pais);
+                aviso.setFecha_publicacion(fecha_publicacion);
+                aviso.setEstado(estado);
+                aviso.setDestaque(destaque);
+                
+                
+                avisos.add(aviso);
+                
+                contAvisos++;
+            }
+            
+            
+            usuarios[i].setContadorAvisos(contAvisos);
+            
+            
+            System.out.println(usuarios[i].getId_usuario()+"******"+usuarios[i].getId_perfil()+"*****"+usuarios[i].getContadorAvisos());
             
             
        }
@@ -166,5 +293,22 @@ public class Consultas {
    }
    
     
+   
+   public void recorrerAvisos(){
+       
+       
+       for (int i = 0; i < 10; i++) {
+          
+           
+           
+           
+       }
+       
+       
+       
+       
+       
+   }
+   
     
 }

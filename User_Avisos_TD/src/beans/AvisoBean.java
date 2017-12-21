@@ -14,6 +14,7 @@ public class AvisoBean {
     
     int id_aviso;
     String portal, categoria,titulo_aviso,pais_aviso,fecha_publicacion,estado;
+    String destaque;
 
     public AvisoBean() {
     }
@@ -73,7 +74,16 @@ public class AvisoBean {
     public void setEstado(String estado) {
         this.estado = estado;
     }
-    
+
+    public String getDestaque() {
+        return destaque;
+    }
+
+    public void setDestaque(String destaque) {
+        this.destaque = destaque;
+    }
+
+ 
     
     
     

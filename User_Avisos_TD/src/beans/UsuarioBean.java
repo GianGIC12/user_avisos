@@ -18,6 +18,8 @@ public class UsuarioBean {
     int id_usuario,id_perfil;
     String pais,ultima_visita,nombre,dni,genero,email,celular,fecha_registro;
     List<AvisoBean> avisos;
+    
+    int contadorAvisos;
 
     public UsuarioBean() {
         
@@ -31,7 +33,7 @@ public class UsuarioBean {
         email="";
         celular="";
         fecha_registro="";
-        
+        contadorAvisos=0;
     }
 
     public int getId_usuario() {
@@ -120,6 +122,14 @@ public class UsuarioBean {
 
     public void setAvisos(List<AvisoBean> avisos) {
         this.avisos = avisos;
+    }
+
+    public int getContadorAvisos() {
+        return contadorAvisos;
+    }
+
+    public void setContadorAvisos(int contadorAvisos) {
+        this.contadorAvisos = contadorAvisos;
     }
     
 
