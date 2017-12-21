@@ -6,7 +6,9 @@
 
 package pruebas;
 
+import archivos.ExportarCSV;
 import gestion.Consultas;
+import java.io.IOException;
 import java.sql.SQLException;
 
 /**
@@ -18,7 +20,7 @@ public class Prueba {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) throws SQLException, IOException {
         // TODO code application logic here
         
         Consultas c= new Consultas();
@@ -30,6 +32,13 @@ public class Prueba {
         c.completarAvisos();
         
         c.recorrerAvisos();
+        
+        
+        ExportarCSV e= new ExportarCSV();
+        
+        e.exportarResultados(c.getUsuarios(),c.getContUsuarios());
+        
+        System.out.println("Finalizado");
         
     }
     

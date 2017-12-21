@@ -42,8 +42,8 @@ public class Consultas {
         objCon.conectar();
         
         
-        sql="SELECT id,idUser FROM db_todobusco_prod.mod_usuario_perfil"
-                + " limit 100";
+        sql="SELECT id,idUser FROM db_todobusco_prod.mod_usuario_perfil  where created_at>'2017-09-01'"
+                + " limit 1000";
         
         System.out.println(sql);
         
@@ -334,6 +334,33 @@ public class Consultas {
        
        
    }
+
+    public String getSql() {
+        return sql;
+    }
+
+    public void setSql(String sql) {
+        this.sql = sql;
+    }
+
+    public UsuarioBean[] getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(UsuarioBean[] usuarios) {
+        this.usuarios = usuarios;
+    }
+
+    public int getContUsuarios() {
+        return contUsuarios;
+    }
+
+    public void setContUsuarios(int contUsuarios) {
+        this.contUsuarios = contUsuarios;
+    }
+   
+   
+   
    
     
 }
