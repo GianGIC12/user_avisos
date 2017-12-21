@@ -29,6 +29,8 @@ public class Prueba {
         
         c.completarAvisos();
         
+        c.recorrerAvisos();
+        
     }
     
 }

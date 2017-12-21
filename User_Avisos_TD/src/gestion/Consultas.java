@@ -275,7 +275,7 @@ public class Consultas {
                 contAvisos++;
             }
             
-            
+            usuarios[i].setAvisos(avisos);
             usuarios[i].setContadorAvisos(contAvisos);
             
             
@@ -297,8 +297,33 @@ public class Consultas {
    public void recorrerAvisos(){
        
        
-       for (int i = 0; i < 10; i++) {
+       for (int i = 0; i < contUsuarios; i++) {
           
+           
+           int contador= usuarios[i].getContadorAvisos();
+           
+           System.out.println(""+contador);
+           
+           if (contador==0) {
+               
+               System.out.println("El id= "+usuarios[i].getId_usuario()+"No tiene avisos "+usuarios[i].getId_perfil());
+               
+           }else{
+               System.out.println("entro");
+               
+               for (AvisoBean aviso: usuarios[i].getAvisos() ) {
+                   
+                   System.out.println("***"+aviso.getId_aviso()+"****"+aviso.getFecha_publicacion()
+                   +"********"+aviso.getPais_aviso()+"****" +aviso.getDestaque());
+                   
+               }
+               
+               
+               
+               
+           }
+           
+           
            
            
            
