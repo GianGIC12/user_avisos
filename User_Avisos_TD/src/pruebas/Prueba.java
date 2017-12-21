@@ -27,6 +27,8 @@ public class Prueba {
         c.completarDatosPersonales();
         
         
+        c.completarAvisos();
+        
     }
     
 }

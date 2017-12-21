@@ -135,8 +135,36 @@ public class Consultas {
        
    } 
     
-    
+   
+   public void completarAvisos() throws SQLException{
+       
+       
+       Conexion objCon = new Conexion();
 
+        objCon.conectar();
+       
+       
+        for (int i = 0; i < contUsuarios; i++) {
+           
+            int contAvisos = 0;
+            
+            sql="select id,idCategoria,tituloAviso,idPais,fchPublicacion,estado from db_todobusco_prod.mod_aviso_aviso\n" 
+                    +"\n" 
+                    +"where idPerfil=" + usuarios[i].getId_perfil();
+            
+            System.out.println(sql);
+            
+            
+       }
+        
+        
+        objCon.desconectar();
+       
+       
+       
+       
+   }
+   
     
     
 }
